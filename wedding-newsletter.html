@@ -21,6 +21,9 @@
         border: 0;
         display: block;
         max-width: 100%;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        user-select: none;
       }
 
       a {
@@ -58,6 +61,7 @@
         max-width: 600px;
         height: auto;
         margin: 0 auto;
+        pointer-events: none;
       }
 
       .hero-copy {
@@ -109,6 +113,7 @@
         max-width: 170px;
         height: auto;
         margin: 24px auto 0;
+        pointer-events: none;
       }
 
       .content {
@@ -256,6 +261,7 @@
         max-width: 150px;
         height: 74px;
         margin: 0 auto 10px;
+        pointer-events: none;
       }
 
       .event strong {
@@ -312,12 +318,14 @@
         max-width: 193px;
         height: auto;
         margin: 0 auto 26px;
+        pointer-events: none;
       }
 
       .footer-art {
         width: 100%;
         height: auto;
         background: #d7dde1;
+        pointer-events: none;
       }
 
       .closing p {
@@ -388,6 +396,7 @@
                     class="plane-art"
                     src="assets/plane-slide.gif"
                     width="680"
+                    draggable="false"
                     alt="Watercolor Vinny Airlines plane">
                 </div>
                 <div class="hero-copy">
@@ -402,6 +411,7 @@
                     class="hero-divider"
                     src="assets/floral-divider.png"
                     width="170"
+                    draggable="false"
                     alt="">
                 </div>
               </td>
@@ -470,6 +480,7 @@
                             src="assets/event-family-dinner.png"
                             height="74"
                             style="width:auto;max-width:150px;height:74px;margin:0 auto 10px;"
+                            draggable="false"
                             alt="">
                           Wednesday, June 24
                           <span class="event-time">6:30pm</span>
@@ -486,6 +497,7 @@
                             src="assets/event-welcome-party.png"
                             height="74"
                             style="width:auto;max-width:150px;height:74px;margin:0 auto 10px;"
+                            draggable="false"
                             alt="">
                           Thursday, June 25
                           <span class="event-time">6:00pm</span>
@@ -502,6 +514,7 @@
                             src="assets/event-wedding.png"
                             height="74"
                             style="width:auto;max-width:150px;height:74px;margin:0 auto 10px;"
+                            draggable="false"
                             alt="">
                           Friday, June 26
                           <span class="event-time">5:00pm</span>
@@ -526,6 +539,7 @@
                   class="floral-divider"
                   src="assets/floral-divider.png"
                   width="193"
+                  draggable="false"
                   alt="">
                 <p>
                   Thank you for helping us keep all the little wedding pieces in place.
@@ -541,6 +555,7 @@
                   class="footer-art"
                   src="assets/singapore-footer.png"
                   width="680"
+                  draggable="false"
                   alt="Watercolor Singapore waterfront illustration with the Merlion, Marina Bay Sands, and Monti">
               </td>
             </tr>
