@@ -247,6 +247,23 @@
         line-height: 1.55;
       }
 
+      .favorite-card {
+        min-height: 164px;
+        overflow: hidden;
+        padding-right: 214px;
+        position: relative;
+      }
+
+      .favorite-overlay {
+        width: 170px;
+        height: auto;
+        position: absolute;
+        right: -4px;
+        bottom: -50px;
+        pointer-events: none;
+        transform: rotate(4deg);
+      }
+
       .small-link {
         display: inline-block;
         margin-top: 12px;
@@ -447,6 +464,17 @@
           font-size: 14px;
         }
 
+        .favorite-card {
+          min-height: 0;
+          padding-right: 96px;
+        }
+
+        .favorite-overlay {
+          width: 82px;
+          right: 14px;
+          bottom: 12px;
+        }
+
         .cta-panel .button,
         .wide-card > .button {
           display: block;
@@ -506,6 +534,18 @@
 
         .section-title {
           font-size: 27px;
+        }
+
+        .favorite-card {
+          padding-right: 18px;
+          padding-bottom: 18px;
+        }
+
+        .favorite-overlay {
+          display: block;
+          width: 92px;
+          margin: 14px 0 0 auto;
+          position: static;
         }
       }
     </style>
@@ -588,10 +628,16 @@
                   <a class="button" href="https://bit.ly/bets-n-jon" target="_blank" rel="noopener">Visit wedding website</a>
                 </div>
 
-                <div class="wide-card">
+                <div class="wide-card favorite-card">
                   <h3>Our favorite places</h3>
                   <p>Peek at a few of our favorite Singapore spots if you have time to explore.</p>
                   <a class="button" href="our-favorite-spots-singapore.html" target="_blank" rel="noopener">View our Field Guide</a>
+                  <img
+                    class="favorite-overlay"
+                    src="assets/field-guide-cover-overlay.png"
+                    width="170"
+                    draggable="false"
+                    alt="">
                 </div>
 
                 <div class="weekend">
