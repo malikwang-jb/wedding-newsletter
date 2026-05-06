@@ -86,8 +86,7 @@
 
       .eyebrow,
       .tag,
-      .button,
-      .meta {
+      .button {
         color: var(--burgundy);
         font-size: 10px;
         font-weight: 700;
@@ -361,15 +360,6 @@
         margin-left: 10px;
       }
 
-      .cover-kicker {
-        color: rgba(79, 86, 20, 0.72);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 12px;
-        font-style: italic;
-        letter-spacing: 0;
-        text-transform: none;
-      }
-
       .cover-art {
         width: 176px;
         margin-top: 2px;
@@ -403,34 +393,51 @@
         background: var(--gold);
       }
 
-      .story-page {
-        background:
-          radial-gradient(circle at 20% 16%, rgba(255, 250, 244, 0.72) 0 50px, transparent 52px),
-          linear-gradient(rgba(201, 146, 45, 0.13) 1px, transparent 1px) 0 0 / 100% 28px,
-          var(--cream);
-      }
-
       .final-image-page {
-        display: block;
+        display: grid;
+        place-items: center;
+        padding: 24px;
         background: var(--cream);
       }
 
       .final-image-frame {
-        position: absolute;
-        inset: clamp(12px, 1.5vw, 18px);
+        position: relative;
         display: grid;
         place-items: center;
+        width: min(94%, 390px);
+        aspect-ratio: 5 / 7;
         margin: 0;
-        overflow: hidden;
-        border: 1px solid rgba(79, 86, 20, 0.16);
-        border-radius: 16px;
-        background: #f7f4ee;
+        padding: 12px 12px 32px;
+        border: 1px solid rgba(79, 86, 20, 0.14);
+        border-radius: 3px;
+        background: #fffaf4;
+        box-shadow:
+          0 16px 28px rgba(48, 45, 38, 0.16),
+          0 1px 0 rgba(255, 255, 255, 0.8) inset;
+        transform: rotate(-1.2deg);
+      }
+
+      .final-image-frame::before {
+        content: "";
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        z-index: 2;
+        width: 94px;
+        height: 28px;
+        border: 1px solid rgba(201, 146, 45, 0.22);
+        background:
+          linear-gradient(90deg, rgba(255, 250, 244, 0.44), rgba(255, 250, 244, 0.78), rgba(255, 250, 244, 0.44));
+        box-shadow: 0 4px 10px rgba(48, 45, 38, 0.08);
+        transform: translateX(-50%) rotate(1.4deg);
+        pointer-events: none;
       }
 
       .final-image-frame img {
         width: 100%;
         height: 100%;
         object-fit: contain;
+        background: #e8f2f2;
       }
 
       .final-note-page {
@@ -490,42 +497,6 @@
         text-transform: uppercase;
       }
 
-      .story-list {
-        display: grid;
-        gap: 10px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .story-list li {
-        display: grid;
-        grid-template-columns: 34px 1fr;
-        gap: 10px;
-        align-items: start;
-        font-size: 13px;
-        line-height: 1.35;
-      }
-
-      .story-list span {
-        display: grid;
-        width: 28px;
-        height: 28px;
-        place-items: center;
-        border: 1px solid var(--gold);
-        border-radius: 50%;
-        color: var(--burgundy);
-        font-family: Georgia, "Times New Roman", serif;
-      }
-
-      .story-list div {
-        min-width: 0;
-      }
-
-      .story-list strong {
-        color: var(--olive);
-      }
-
       .page-head {
         display: flex;
         align-items: start;
@@ -578,35 +549,6 @@
         object-fit: cover;
       }
 
-      .spot-image.placeholder {
-        display: grid;
-        min-height: clamp(170px, 22vw, 245px);
-        place-items: center;
-        padding: 26px;
-        background:
-          radial-gradient(circle at 22% 24%, rgba(255, 250, 244, 0.82), transparent 64px),
-          linear-gradient(135deg, rgba(215, 221, 225, 0.9), rgba(238, 241, 239, 0.96));
-        text-align: center;
-      }
-
-      .placeholder-mark {
-        color: var(--olive);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 28px;
-        line-height: 1.08;
-      }
-
-      .placeholder-mark span {
-        display: block;
-        margin-top: 10px;
-        color: var(--burgundy);
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 1.4px;
-        text-transform: uppercase;
-      }
-
       .copy {
         display: grid;
         align-content: start;
@@ -632,20 +574,11 @@
         color: var(--olive);
       }
 
-      .practical-grid {
-        display: grid;
-        gap: 12px;
-      }
-
       .note-card {
         padding: 14px;
         border: 1px solid rgba(79, 86, 20, 0.2);
         border-radius: 14px;
         background: rgba(255, 250, 244, 0.7);
-      }
-
-      .note-card h3 {
-        margin-top: 4px;
       }
 
       .note-card p:not(.tag) {
@@ -820,8 +753,7 @@
         }
 
         p,
-        .field-list li,
-        .story-list li {
+        .field-list li {
           font-size: 12px;
         }
 
@@ -962,7 +894,8 @@
         }
 
         .final-image-frame {
-          inset: 14px;
+          width: min(92%, 320px);
+          padding: 10px 10px 26px;
         }
 
         .sticky-note {
@@ -1037,7 +970,7 @@
     </main>
 
     <template id="coverPage">
-      <section class="page cover-page single-mobile">
+      <section class="page cover-page">
         <div class="cover-content">
           <p class="eyebrow">Jonathan &amp; Betsy | June 26, 2026</p>
           <h1><span>Singapore</span><span>Field Guide</span></h1>
@@ -1262,7 +1195,6 @@
       const finalNoteTemplate = document.getElementById("finalNotePage");
       const mobileQuery = window.matchMedia("(max-width: 720px)");
       let current = 0;
-      let direction = "right";
       let isFlipping = false;
 
       function isMobile() {
@@ -1299,10 +1231,6 @@
           page = finalImageTemplate.content.firstElementChild.cloneNode(true);
         } else if (pageRef === "final-note") {
           page = finalNoteTemplate.content.firstElementChild.cloneNode(true);
-        } else if (pageRef === "blank") {
-          page = document.createElement("section");
-          page.className = "page";
-          page.innerHTML = "<div></div><div></div><div></div>";
         } else {
           const spot = spots[pageRef];
           page = spotTemplate.content.firstElementChild.cloneNode(true);
@@ -1313,16 +1241,11 @@
           page.querySelector("[data-field='num']").textContent = spot.num;
           page.querySelector("[data-field='description']").textContent = spot.description;
           const figure = page.querySelector("[data-field='figure']");
-          if (spot.placeholder) {
-            figure.classList.add("placeholder");
-            figure.innerHTML = `<div class="placeholder-mark">${spot.placeholder}<span>Illustration placeholder</span></div>`;
-          } else {
-            const img = document.createElement("img");
-            img.src = spot.image;
-            img.alt = spot.alt;
-            if (spot.imagePosition) img.style.objectPosition = spot.imagePosition;
-            figure.appendChild(img);
-          }
+          const img = document.createElement("img");
+          img.src = spot.image;
+          img.alt = spot.alt;
+          if (spot.imagePosition) img.style.objectPosition = spot.imagePosition;
+          figure.appendChild(img);
           const list = page.querySelector("[data-field='list']");
           spot.list.forEach(([label, value]) => {
             const item = document.createElement("li");
@@ -1398,7 +1321,6 @@
         const boundedTarget = Math.max(0, Math.min(maxStep(), target));
         if (boundedTarget === current) return;
 
-        direction = boundedTarget > current ? "right" : "left";
         isFlipping = true;
         book.classList.remove("is-clickable");
         updateControls();
