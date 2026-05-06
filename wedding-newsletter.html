@@ -13,6 +13,10 @@
         font-family: Arial, Helvetica, sans-serif;
       }
 
+      * {
+        box-sizing: border-box;
+      }
+
       table {
         border-collapse: collapse;
       }
@@ -218,7 +222,29 @@
       }
 
       .card-tall {
-        min-height: 214px;
+        min-height: 318px;
+      }
+
+      .wide-card {
+        margin-top: 16px;
+        padding: 20px 22px;
+        background: rgba(245, 247, 245, 0.72);
+        border: 1px solid rgba(79, 86, 20, 0.25);
+        border-radius: 14px;
+      }
+
+      .wide-card h3 {
+        margin: 0 0 8px;
+        color: #4f5614;
+        font-size: 22px;
+        line-height: 1.2;
+      }
+
+      .wide-card p {
+        margin: 0 0 14px;
+        color: #4c5141;
+        font-size: 15px;
+        line-height: 1.55;
       }
 
       .small-link {
@@ -347,20 +373,58 @@
           padding: 0;
         }
 
+        .email {
+          width: 100% !important;
+          max-width: 100% !important;
+          border-radius: 0;
+          box-shadow: none;
+        }
+
+        .plane-wrap {
+          padding-top: 8px;
+        }
+
+        .plane-art {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+
         .hero-copy,
         .content,
         .closing {
-          padding-left: 22px;
-          padding-right: 22px;
+          padding-left: 20px !important;
+          padding-right: 20px !important;
         }
 
         h1 {
-          font-size: 38px;
+          font-size: 36px;
         }
 
         .date {
           font-size: 22px;
           letter-spacing: 3px;
+        }
+
+        .hero-note,
+        .intro,
+        .cta-panel p,
+        .closing p {
+          font-size: 15px;
+        }
+
+        .cta-panel,
+        .wide-card,
+        .weekend {
+          border-radius: 12px;
+        }
+
+        .cta-panel,
+        .wide-card {
+          padding: 18px;
+        }
+
+        .section-title {
+          font-size: 29px;
         }
 
         .stack {
@@ -371,11 +435,77 @@
         }
 
         .stack + .stack {
-          padding-top: 14px !important;
+          padding-top: 0 !important;
         }
 
         .card {
           min-height: 0;
+          padding: 16px;
+        }
+
+        .wide-card p {
+          font-size: 14px;
+        }
+
+        .cta-panel .button,
+        .wide-card > .button {
+          display: block;
+          width: 100%;
+          max-width: 260px;
+          margin-right: auto;
+          margin-left: auto;
+          padding: 12px 16px;
+          text-align: center;
+        }
+
+        .weekend {
+          padding: 22px 16px;
+        }
+
+        .event {
+          padding-bottom: 14px !important;
+        }
+
+        .event-link {
+          padding: 14px 12px 16px;
+        }
+
+        .event-icon {
+          max-width: 132px;
+          height: 66px;
+        }
+
+        .event strong {
+          font-size: 20px;
+        }
+
+        .map-cta {
+          display: block;
+          width: fit-content;
+          margin-right: auto;
+          margin-left: auto;
+        }
+      }
+
+      @media screen and (max-width: 380px) {
+        .hero-copy,
+        .content,
+        .closing {
+          padding-left: 16px !important;
+          padding-right: 16px !important;
+        }
+
+        h1 {
+          font-size: 32px;
+        }
+
+        .date {
+          font-size: 20px;
+          letter-spacing: 2px;
+        }
+
+        .section-title {
+          font-size: 27px;
         }
       }
     </style>
@@ -438,35 +568,31 @@
                       <div class="card card-tall">
                         <div class="card-icon">1</div>
                         <h3>RSVP status &amp; meal choices</h3>
-                        <p>Confirm your attendance, guest details, and wedding reception meal.<br><br>Please note if you have special dietary restrictions, high chair, or other requests.</p>
+                        <p>Confirm your attendance, guest details, and wedding reception meal: angus beef, lobster risotto, or kids menu.<br><br>Special accommodations can be made if the options do not work for you; please note any dietary restrictions, high chair, or other requests.</p>
                       </div>
                     </td>
                     <td class="stack" width="50%" valign="top" style="padding-left:8px;padding-bottom:16px;">
-                      <div class="card">
+                      <div class="card card-tall">
                         <div class="card-icon">2</div>
                         <h3>Lodging &amp; transportation</h3>
                         <p>Review hotel and transportation details on the wedding website.<br><br>Limited Monti parking is available for Singapore residents; please request a spot in your RSVP. MRT routes are available through Google Maps or Citymapper, and Grab is recommended for rideshare.</p>
                       </div>
                     </td>
                   </tr>
-                  <tr>
-                    <td class="stack" width="50%" valign="top" style="padding-right:8px;">
-                      <div class="card">
-                        <div class="card-icon">3</div>
-                        <h3>FAQs</h3>
-                        <p>Check the wedding website for dress code, timing, logistics, and helpful guest notes.</p>
-                      </div>
-                    </td>
-                    <td class="stack" width="50%" valign="top" style="padding-left:8px;">
-                      <div class="card">
-                        <div class="card-icon">4</div>
-                        <h3>Our favorite places</h3>
-                        <p>Peek at a few of our favorite Singapore spots if you have time to explore.</p>
-                        <a class="small-link" href="our-favorite-spots-singapore.pdf" target="_blank" rel="noopener">Download guide</a>
-                      </div>
-                    </td>
-                  </tr>
                 </table>
+
+                <div class="wide-card">
+                  <h3>FAQs</h3>
+                  <p>Check the wedding website for timing, logistics, and helpful guest notes.</p>
+                  <p>The wedding dress code is Summer Garden Party Formal. Men should wear a suit of any color with a shirt and optional tie. Women should wear a floor-length gown, knee-length cocktail dress, pantsuit, or dressy separates. Women should avoid light blue (the bridal party's color) and black. For inspiration, you can peek at our <a href="https://pin.it/52w0Hv78v" target="_blank" rel="noopener">Pinterest board</a>, though you are not limited to those options.</p>
+                  <a class="button" href="https://bit.ly/bets-n-jon" target="_blank" rel="noopener">Visit wedding website</a>
+                </div>
+
+                <div class="wide-card">
+                  <h3>Our favorite places</h3>
+                  <p>Peek at a few of our favorite Singapore spots if you have time to explore.</p>
+                  <a class="button" href="our-favorite-spots-singapore.html" target="_blank" rel="noopener">View our Field Guide</a>
+                </div>
 
                 <div class="weekend">
                   <h2 class="section-title" style="margin-bottom:8px;">Wedding events</h2>
@@ -486,7 +612,7 @@
                           <span class="event-time">6:30pm</span>
                           <strong>Family Dinner</strong>
                           The Blue Ginger<br>
-                          Tanjong Pagar
+                          Tanjong Pagar<br>
                           <span class="map-cta">View map</span>
                         </a>
                       </td>
@@ -503,7 +629,7 @@
                           <span class="event-time">6:00pm</span>
                           <strong>Welcome Party</strong>
                           Knots Cafe &amp; Living<br>
-                          Pasir Panjang
+                          Pasir Panjang<br>
                           <span class="map-cta">View map</span>
                         </a>
                       </td>
@@ -520,7 +646,7 @@
                           <span class="event-time">5:00pm</span>
                           <strong>Wedding</strong>
                           Monti Italian Restaurant<br>
-                          at 1-Pavillion
+                          at 1-Pavillion<br>
                           <span class="map-cta">View map</span>
                         </a>
                       </td>
