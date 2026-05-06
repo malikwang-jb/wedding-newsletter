@@ -245,20 +245,17 @@
       }
 
       .favorite-card {
-        min-height: 164px;
         overflow: hidden;
-        padding-right: 214px;
-        position: relative;
       }
 
-      .favorite-overlay {
-        width: 170px;
+      .favorite-copy {
+        padding-right: 18px;
+      }
+
+      .favorite-cover {
+        width: 112px;
         height: auto;
-        position: absolute;
-        right: -4px;
-        bottom: -50px;
-        pointer-events: none;
-        transform: rotate(4deg);
+        margin: 0 0 0 auto;
       }
 
       .small-link {
@@ -462,14 +459,20 @@
         }
 
         .favorite-card {
-          min-height: 0;
-          padding-right: 96px;
+          padding-right: 18px;
         }
 
-        .favorite-overlay {
-          width: 82px;
-          right: 14px;
-          bottom: 12px;
+        .favorite-copy,
+        .favorite-art {
+          display: block !important;
+          width: 100% !important;
+          padding-right: 0 !important;
+          text-align: left !important;
+        }
+
+        .favorite-cover {
+          width: 88px !important;
+          margin: 14px auto 0;
         }
 
         .cta-panel .button,
@@ -533,17 +536,6 @@
           font-size: 27px;
         }
 
-        .favorite-card {
-          padding-right: 18px;
-          padding-bottom: 18px;
-        }
-
-        .favorite-overlay {
-          display: block;
-          width: 92px;
-          margin: 14px 0 0 auto;
-          position: static;
-        }
       }
     </style>
   </head>
@@ -624,14 +616,22 @@
                 </div>
 
                 <div class="wide-card favorite-card">
-                  <h3>Our favorite places</h3>
-                  <p>Peek at a few of our favorite Singapore spots if you have time to explore.</p>
-                  <a class="button" href="https://malikwang-jb.github.io/wedding-newsletter/our-favorite-spots-singapore.html" target="_blank" rel="noopener">View our Field Guide</a>
-                  <img
-                    class="favorite-overlay"
-                    src="https://malikwang-jb.github.io/wedding-newsletter/assets/field-guide-cover-overlay.png"
-                    width="170"
-                    alt="">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td class="favorite-copy" valign="middle">
+                        <h3>Our favorite places</h3>
+                        <p>Peek at a few of our favorite Singapore spots if you have time to explore.</p>
+                        <a class="button" href="https://malikwang-jb.github.io/wedding-newsletter/our-favorite-spots-singapore.html" target="_blank" rel="noopener">View our Field Guide</a>
+                      </td>
+                      <td class="favorite-art" width="122" valign="middle" align="right">
+                        <img
+                          class="favorite-cover"
+                          src="https://malikwang-jb.github.io/wedding-newsletter/assets/field-guide-cover-overlay.png"
+                          width="112"
+                          alt="">
+                      </td>
+                    </tr>
+                  </table>
                 </div>
 
                 <div class="weekend">
