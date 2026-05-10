@@ -144,6 +144,15 @@
         cursor: pointer;
       }
 
+      .book:focus-visible,
+      .control-btn:focus-visible,
+      .dot:focus-visible,
+      .button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid rgba(123, 30, 43, 0.5);
+        outline-offset: 4px;
+      }
+
       .book.closed {
         grid-template-columns: minmax(0, 380px);
         justify-content: center;
@@ -946,6 +955,14 @@
           transform: translate3d(18px, -4px, 0) scale(0.985);
         }
       }
+
+      @media (prefers-reduced-motion: reduce) {
+        .page,
+        .turning-sheet {
+          animation-duration: 1ms !important;
+          transition: none !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -954,17 +971,24 @@
         <img src="assets/floral-divider.png" alt="">
         <div>
           <p class="eyebrow">Field guide notebook</p>
-          <p>Flip through our favorite Singapore spots. Click on the bottom right corner or arrows.</p>
+          <p>Flip through our favorite Singapore spots. Tap or click the page, use the arrows, or use the keyboard.</p>
         </div>
       </header>
 
       <section class="flatlay" aria-label="Flippable flat-lay Singapore field notes">
-        <div class="book" id="book" aria-live="polite"></div>
+        <div
+          class="book"
+          id="book"
+          role="group"
+          tabindex="0"
+          aria-label="Singapore field guide pages. Use arrow keys or the controls to move through the guide."
+          aria-live="polite"
+        ></div>
 
         <nav class="controls" aria-label="Notebook controls">
-          <button class="control-btn" type="button" id="prevPage" aria-label="Previous spread">‹</button>
+          <button class="control-btn" type="button" id="prevPage" aria-label="Previous page">‹</button>
           <div class="progress" id="progress" aria-label="Spread progress"></div>
-          <button class="control-btn" type="button" id="nextPage" aria-label="Next spread">›</button>
+          <button class="control-btn" type="button" id="nextPage" aria-label="Next page">›</button>
         </nav>
       </section>
     </main>
@@ -1057,7 +1081,7 @@
             <div>
               <p class="tag">Full map</p>
               <p>Browse all our saved Singapore spots.</p>
-              <a class="button" href="https://maps.app.goo.gl/o4M4ES1cKLd4P8Dy8">Open saves</a>
+              <a class="button" href="https://maps.app.goo.gl/o4M4ES1cKLd4P8Dy8" target="_blank" rel="noopener">Open saves</a>
             </div>
           </article>
         </div>
@@ -1194,6 +1218,7 @@
       const finalImageTemplate = document.getElementById("finalImagePage");
       const finalNoteTemplate = document.getElementById("finalNotePage");
       const mobileQuery = window.matchMedia("(max-width: 720px)");
+      const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
       let current = 0;
       let isFlipping = false;
 
@@ -1211,7 +1236,8 @@
           const dot = document.createElement("button");
           dot.className = "dot";
           dot.type = "button";
-          dot.setAttribute("aria-label", index === 0 ? "Go to cover" : `Go to page ${index}`);
+          const pageType = isMobile() ? "page" : "spread";
+          dot.setAttribute("aria-label", index === 0 ? "Go to cover" : `Go to ${pageType} ${index}`);
           dot.addEventListener("click", () => {
             goTo(index);
           });
@@ -1283,6 +1309,7 @@
       }
 
       function animateFlip(target) {
+        if (reducedMotionQuery.matches) return Promise.resolve();
         const forward = target > current;
         const turnPage = forward
           ? book.querySelector(".page.right, .page.solo")
@@ -1354,15 +1381,37 @@
       });
 
       document.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowLeft") prev.click();
-        if (event.key === "ArrowRight") next.click();
+        const target = event.target;
+        if (target instanceof HTMLElement && target.closest("input, textarea, select, [contenteditable='true']")) return;
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          goTo(current - 1);
+        }
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          goTo(current + 1);
+        }
+        if (event.key === "Home") {
+          event.preventDefault();
+          goTo(0);
+        }
+        if (event.key === "End") {
+          event.preventDefault();
+          goTo(maxStep());
+        }
       });
 
-      mobileQuery.addEventListener("change", () => {
+      const handleViewportChange = () => {
         current = Math.min(current, maxStep());
         buildProgress();
         render();
-      });
+      };
+
+      if (typeof mobileQuery.addEventListener === "function") {
+        mobileQuery.addEventListener("change", handleViewportChange);
+      } else {
+        mobileQuery.addListener(handleViewportChange);
+      }
 
       buildProgress();
       render();

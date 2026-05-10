@@ -3,8 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
     <title>Betsy &amp; Jonathan Wedding Update</title>
     <style>
+      :root,
+      html,
+      body {
+        color-scheme: only light;
+        supported-color-schemes: light;
+      }
+
       body {
         margin: 0;
         padding: 0;
@@ -196,7 +205,7 @@
       .card-icon {
         width: 42px;
         height: 42px;
-        margin: 0 auto 12px;
+        margin: 0 0 12px;
         border: 1px solid #c9922d;
         border-radius: 50%;
         color: #7b1e2b;
@@ -211,7 +220,7 @@
         color: #4f5614;
         font-size: 18px;
         line-height: 1.25;
-        text-align: center;
+        text-align: left;
       }
 
       .card p {
@@ -223,7 +232,7 @@
       }
 
       .card-tall {
-        min-height: 362px;
+        min-height: 405px;
       }
 
       .wide-card {
@@ -306,7 +315,7 @@
 
       .event-link {
         display: block;
-        min-height: 304px;
+        min-height: 326px;
         padding: 10px 8px 12px;
         border: 1px solid rgba(79, 86, 20, 0.22);
         border-radius: 12px;
@@ -323,8 +332,13 @@
         pointer-events: none;
       }
 
+      .event-date {
+        display: block;
+      }
+
       .event strong {
         display: block;
+        height: 52px;
         color: #4f5614;
         font-family: Georgia, 'Times New Roman', serif;
         font-size: 21px;
@@ -337,6 +351,11 @@
         margin-top: 4px;
         color: #7b1e2b;
         font-weight: 700;
+      }
+
+      .event-venue {
+        display: block;
+        height: 66px;
       }
 
       .map-cta {
@@ -546,7 +565,13 @@
         }
 
         .event strong {
+          height: auto;
           font-size: 20px;
+        }
+
+        .event-date,
+        .event-venue {
+          height: auto;
         }
 
         .map-cta {
@@ -579,17 +604,142 @@
         }
 
       }
+
+      @media (prefers-color-scheme: dark) {
+        body,
+        .wrapper {
+          background: #ffffff !important;
+          color: #4f5614 !important;
+        }
+
+        .email,
+        .hero,
+        .plane-wrap,
+        .content,
+        .map-art,
+        .closing,
+        .footer-art {
+          background: #d7dde1 !important;
+        }
+
+        .cta-panel,
+        .wide-card,
+        .favorite-card,
+        .weekend,
+        .card {
+          background: #eef1ef !important;
+        }
+
+        .event-link {
+          background: #f3f5f3 !important;
+          color: #4f5614 !important;
+        }
+
+        h1,
+        h2,
+        h3,
+        .names,
+        .date,
+        .section-title,
+        .card h3,
+        .wide-card h3,
+        .event,
+        .event strong,
+        .event-date,
+        .event-venue {
+          color: #4f5614 !important;
+        }
+
+        p,
+        .hero-note,
+        .intro,
+        .card p,
+        .wide-card p,
+        .closing p {
+          color: #4c5141 !important;
+        }
+
+        .eyebrow,
+        .event-time,
+        .card-icon {
+          color: #7b1e2b !important;
+        }
+
+        .button,
+        .map-cta {
+          background: #7b1e2b !important;
+          color: #fffaf4 !important;
+        }
+
+        .mini-rule {
+          background: #c9922d !important;
+        }
+      }
+
+      [data-ogsc] body,
+      [data-ogsc] .wrapper {
+        background: #ffffff !important;
+        color: #4f5614 !important;
+      }
+
+      [data-ogsc] .email,
+      [data-ogsc] .hero,
+      [data-ogsc] .plane-wrap,
+      [data-ogsc] .content,
+      [data-ogsc] .map-art,
+      [data-ogsc] .closing,
+      [data-ogsc] .footer-art {
+        background: #d7dde1 !important;
+      }
+
+      [data-ogsc] .cta-panel,
+      [data-ogsc] .wide-card,
+      [data-ogsc] .favorite-card,
+      [data-ogsc] .weekend,
+      [data-ogsc] .card {
+        background: #eef1ef !important;
+      }
+
+      [data-ogsc] h1,
+      [data-ogsc] h2,
+      [data-ogsc] h3,
+      [data-ogsc] .names,
+      [data-ogsc] .date,
+      [data-ogsc] .section-title,
+      [data-ogsc] .card h3,
+      [data-ogsc] .wide-card h3,
+      [data-ogsc] .event,
+      [data-ogsc] .event strong,
+      [data-ogsc] .event-date,
+      [data-ogsc] .event-venue {
+        color: #4f5614 !important;
+      }
+
+      [data-ogsc] p,
+      [data-ogsc] .hero-note,
+      [data-ogsc] .intro,
+      [data-ogsc] .card p,
+      [data-ogsc] .wide-card p,
+      [data-ogsc] .closing p {
+        color: #4c5141 !important;
+      }
+
+      [data-ogsc] .button,
+      [data-ogsc] .map-cta {
+        background: #7b1e2b !important;
+        color: #fffaf4 !important;
+      }
     </style>
   </head>
-  <body>
+  <body bgcolor="#ffffff" style="margin:0;padding:0;background:#ffffff;color:#4f5614;font-family:Arial, Helvetica, sans-serif;">
     <div style="display:none;max-height:0;overflow:hidden;opacity:0;">
       Please confirm your RSVP, select wedding reception meals, and review parking details for Betsy and Jonathan's wedding weekend.
     </div>
 
-    <table role="presentation" class="wrapper" width="100%" cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;padding:0 0 30px;">
+    <table role="presentation" class="wrapper" width="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="width:100%;background:#ffffff;padding:0 0 30px;">
       <tr>
-        <td align="center" style="padding:0;text-align:center;">
-          <table role="presentation" class="email" width="640" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:640px;margin:0 auto;background:#d7dde1;border-radius:2px;overflow:hidden;">
+        <td align="center" bgcolor="#ffffff" style="padding:0;text-align:center;background:#ffffff;">
+          <table role="presentation" class="email" width="640" align="center" cellpadding="0" cellspacing="0" bgcolor="#d7dde1" style="width:100%;max-width:640px;margin:0 auto;background:#d7dde1;border-radius:2px;overflow:hidden;">
             <tr>
               <td class="hero">
                 <div class="plane-wrap">
@@ -644,7 +794,7 @@
                       <div class="card card-tall">
                         <div class="card-icon">2</div>
                         <h3>Lodging &amp; transportation</h3>
-                        <p>Review hotel and transportation details on the wedding website.<br><br>Limited Monti parking is available for Singapore residents; please request a spot in your RSVP. MRT routes are available through Google Maps or Citymapper, and Grab is recommended for rideshare.</p>
+                        <p>Review hotel and transportation details on the wedding website. We do not have a hotel block, but provided a list of recommended hotels around the area.<br><br>Limited Monti parking is available for Singapore residents; please request a spot in your RSVP. MRT routes are available through Google Maps or Citymapper, and Grab is recommended for rideshare.</p>
                       </div>
                     </td>
                   </tr>
@@ -696,11 +846,11 @@
                             height="74"
                             style="width:auto;max-width:150px;height:74px;margin:0 auto 10px;"
                             alt="">
-                          Wednesday, June 24
+                          <span class="event-date">Wed, June 24</span>
                           <span class="event-time">6:30pm</span>
                           <strong>Family Dinner</strong>
-                          The Blue Ginger<br>
-                          Tanjong Pagar<br>
+                          <span class="event-venue">The Blue Ginger<br>
+                          Tanjong Pagar</span>
                           <span class="map-cta">View map</span>
                         </a>
                       </td>
@@ -712,11 +862,11 @@
                             height="74"
                             style="width:auto;max-width:150px;height:74px;margin:0 auto 10px;"
                             alt="">
-                          Thursday, June 25
+                          <span class="event-date">Thurs, June 25</span>
                           <span class="event-time">6:00pm</span>
                           <strong>Welcome Party</strong>
-                          Knots Cafe &amp; Living<br>
-                          Pasir Panjang<br>
+                          <span class="event-venue">Knots Cafe &amp; Living<br>
+                          Pasir Panjang</span>
                           <span class="map-cta">View map</span>
                         </a>
                       </td>
@@ -728,18 +878,18 @@
                             height="74"
                             style="width:auto;max-width:150px;height:74px;margin:0 auto 10px;"
                             alt="">
-                          Friday, June 26
+                          <span class="event-date">Fri, June 26</span>
                           <span class="event-time">5:00pm</span>
-                          <strong>Wedding</strong>
-                          Monti Italian Restaurant<br>
-                          at 1-Pavillion<br>
+                                  <strong>Our<br>Wedding</strong>
+                          <span class="event-venue">Monti Italian Restaurant<br>
+                          at 1-Pavillion</span>
                           <span class="map-cta">View map</span>
                         </a>
                       </td>
                     </tr>
                   </table>
                   <p class="event-note">
-                    Please note: Family Dinner is an intimate gathering for invited guests only.
+                    Please note: Family Dinner is an intimate gathering for invited guests only. Food will be provided at all events, taking dietary consideration into mind.
                   </p>
                 </div>
               </td>
