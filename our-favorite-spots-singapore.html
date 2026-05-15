@@ -1,0 +1,1420 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Singapore Field Notes | Our Favorite Spots</title>
+    <style>
+      :root {
+        --paper: #f4f1ec;
+        --table: #a9ba99;
+        --table-deep: #91a67f;
+        --cream: #eef1ef;
+        --olive: #4f5614;
+        --olive-soft: #5f6444;
+        --text: #454b35;
+        --burgundy: #7b1e2b;
+        --gold: #c9922d;
+        --white: #fffaf4;
+        --line: rgba(79, 86, 20, 0.24);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+        background:
+          radial-gradient(circle at 18% 12%, rgba(238, 241, 239, 0.8), transparent 220px),
+          radial-gradient(circle at 82% 14%, rgba(215, 221, 225, 0.72), transparent 230px),
+          var(--paper);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        padding: 28px;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        color: var(--olive);
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 400;
+      }
+
+      h1 {
+        font-size: clamp(44px, 5vw, 68px);
+        line-height: 0.95;
+      }
+
+      h2 {
+        font-size: 30px;
+        line-height: 1.05;
+      }
+
+      h3 {
+        font-size: 22px;
+        line-height: 1.1;
+      }
+
+      p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .eyebrow,
+      .tag,
+      .button {
+        color: var(--burgundy);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.6px;
+        line-height: 1.15;
+        text-transform: uppercase;
+      }
+
+      .app {
+        width: min(100%, 1180px);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: min(100%, 1040px);
+        margin: 0 auto 18px;
+      }
+
+      .topbar img {
+        width: 84px;
+      }
+
+      .topbar p:not(.eyebrow) {
+        color: var(--olive-soft);
+      }
+
+      .flatlay {
+        width: min(100%, 1040px);
+        margin: 0 auto;
+        padding: 34px 44px 30px;
+        border: 1px solid rgba(79, 86, 20, 0.18);
+        border-radius: 28px;
+        background:
+          radial-gradient(circle at 18% 18%, rgba(255, 250, 244, 0.2), transparent 190px),
+          radial-gradient(circle at 86% 24%, rgba(255, 250, 244, 0.18), transparent 180px),
+          linear-gradient(135deg, var(--table), var(--table-deep));
+        box-shadow: 0 26px 60px rgba(48, 45, 38, 0.18);
+      }
+
+      .book {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        width: min(100%, 760px);
+        min-height: clamp(520px, 58vw, 620px);
+        margin: 0 auto;
+        perspective: 1800px;
+        transform-style: preserve-3d;
+        filter: drop-shadow(0 20px 34px rgba(48, 45, 38, 0.22));
+      }
+
+      .book.is-clickable {
+        cursor: pointer;
+      }
+
+      .book:focus-visible,
+      .control-btn:focus-visible,
+      .dot:focus-visible,
+      .button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid rgba(123, 30, 43, 0.5);
+        outline-offset: 4px;
+      }
+
+      .book.closed {
+        grid-template-columns: minmax(0, 380px);
+        justify-content: center;
+        width: min(100%, 420px);
+        min-height: clamp(520px, 58vw, 620px);
+      }
+
+      .book::before {
+        content: "";
+        position: absolute;
+        top: 16px;
+        bottom: 16px;
+        left: calc(50% - 10px);
+        z-index: 4;
+        width: 20px;
+        border-radius: 999px;
+        background:
+          linear-gradient(90deg, rgba(48, 45, 38, 0.14), rgba(255, 250, 244, 0.52), rgba(48, 45, 38, 0.14)),
+          repeating-linear-gradient(180deg, transparent 0 34px, rgba(123, 30, 43, 0.22) 35px 39px, transparent 40px 55px);
+        pointer-events: none;
+      }
+
+      .book.closed::before,
+      .book.closed::after {
+        display: none;
+      }
+
+      .book::after {
+        content: "";
+        position: absolute;
+        inset: 14px calc(50% - 1px) 14px auto;
+        z-index: 3;
+        width: 2px;
+        background: rgba(79, 86, 20, 0.1);
+        pointer-events: none;
+      }
+
+      .page {
+        position: relative;
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        gap: clamp(9px, 1.1vw, 14px);
+        min-height: clamp(520px, 58vw, 620px);
+        overflow: hidden;
+        padding: clamp(20px, 2.5vw, 32px) clamp(20px, 2.5vw, 32px) clamp(18px, 2.1vw, 26px);
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(rgba(201, 146, 45, 0.13) 1px, transparent 1px) 0 0 / 100% 28px,
+          var(--cream);
+        transition:
+          opacity 180ms ease,
+          transform 520ms cubic-bezier(0.2, 0.72, 0.18, 1);
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+      }
+
+      .page.left {
+        padding-left: clamp(22px, 2.8vw, 34px);
+        padding-right: clamp(30px, 3.2vw, 44px);
+        border-radius: 22px 8px 8px 22px;
+        transform-origin: right center;
+      }
+
+      .page.right {
+        padding-left: clamp(30px, 3.2vw, 44px);
+        padding-right: clamp(22px, 2.8vw, 34px);
+        border-radius: 8px 22px 22px 8px;
+        transform-origin: left center;
+      }
+
+      .page.solo {
+        border-radius: 24px;
+        transform-origin: center center;
+        box-shadow:
+          10px 10px 0 rgba(255, 250, 244, 0.42),
+          18px 18px 26px rgba(48, 45, 38, 0.16);
+      }
+
+      .page.left::after,
+      .page.right::after,
+      .page.solo::after {
+        content: "Click to flip";
+        position: absolute;
+        right: 22px;
+        bottom: 18px;
+        color: rgba(123, 30, 43, 0.72);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        opacity: 0;
+        transition: opacity 160ms ease;
+      }
+
+      .page.left::after {
+        right: auto;
+        left: 22px;
+        content: "Click to go back";
+      }
+
+      .book.is-clickable:hover .page::after {
+        opacity: 1;
+      }
+
+      .turning-sheet {
+        position: absolute;
+        z-index: 8;
+        min-height: 0;
+        margin: 0;
+        will-change: transform, opacity;
+        pointer-events: none;
+        contain: paint;
+      }
+
+      .turning-sheet.forward {
+        transform-origin: left center;
+        animation: notebookForward 720ms cubic-bezier(0.32, 0.02, 0.18, 1) forwards;
+        box-shadow: -10px 12px 18px rgba(48, 45, 38, 0.16);
+      }
+
+      .turning-sheet.back {
+        transform-origin: right center;
+        animation: notebookBack 720ms cubic-bezier(0.32, 0.02, 0.18, 1) forwards;
+        box-shadow: 10px 12px 18px rgba(48, 45, 38, 0.16);
+      }
+
+      @keyframes notebookForward {
+        0% {
+          opacity: 1;
+          transform: translate3d(0, 0, 0) rotateY(0deg);
+        }
+        55% {
+          opacity: 0.98;
+          transform: translate3d(-8px, 0, 26px) rotateY(-96deg);
+        }
+        100% {
+          opacity: 0.72;
+          transform: translate3d(-18px, 0, 10px) rotateY(-174deg);
+        }
+      }
+
+      @keyframes notebookBack {
+        0% {
+          opacity: 1;
+          transform: translate3d(0, 0, 0) rotateY(0deg);
+        }
+        55% {
+          opacity: 0.98;
+          transform: translate3d(8px, 0, 26px) rotateY(96deg);
+        }
+        100% {
+          opacity: 0.72;
+          transform: translate3d(18px, 0, 10px) rotateY(174deg);
+        }
+      }
+
+      .cover-page {
+        grid-template-rows: 1fr;
+        place-items: center;
+        align-content: center;
+        text-align: center;
+        border-radius: 0 44px 44px 0;
+        background:
+          radial-gradient(circle at 32% 18%, rgba(255, 250, 244, 0.42), transparent 110px),
+          radial-gradient(circle at 68% 82%, rgba(79, 86, 20, 0.07), transparent 170px),
+          repeating-radial-gradient(circle at 28% 32%, rgba(255, 250, 244, 0.16) 0 1px, transparent 1px 4px),
+          repeating-linear-gradient(0deg, rgba(79, 86, 20, 0.035) 0 1px, transparent 1px 9px),
+          linear-gradient(180deg, #d7dde1, #cbd5d9);
+        border: 1.5px solid rgba(59, 72, 76, 0.42);
+        color: #314021;
+        box-shadow:
+          10px 10px 0 rgba(255, 250, 244, 0.42),
+          18px 18px 26px rgba(48, 45, 38, 0.16),
+          inset 0 0 0 1px rgba(255, 250, 244, 0.18),
+          inset -10px 0 16px rgba(59, 72, 76, 0.08);
+      }
+
+      .cover-page::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        z-index: 0;
+        width: 12px;
+        border-right: 1px solid rgba(59, 72, 76, 0.12);
+        background:
+          linear-gradient(90deg, rgba(48, 45, 38, 0.12), rgba(255, 250, 244, 0.16));
+        box-shadow: inset -5px 0 10px rgba(59, 72, 76, 0.08);
+        pointer-events: none;
+      }
+
+      .cover-page::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        border-radius: inherit;
+        background:
+          linear-gradient(90deg, rgba(48, 45, 38, 0.1), transparent 18%),
+          linear-gradient(180deg, rgba(255, 250, 244, 0.34), transparent 16%, transparent 82%, rgba(48, 45, 38, 0.06));
+        box-shadow: inset 0 0 0 1px rgba(255, 250, 244, 0.16);
+        opacity: 0.82;
+        pointer-events: none;
+      }
+
+      .cover-page .cover-content {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        justify-items: center;
+        align-content: center;
+        gap: 16px;
+        width: min(78%, 315px);
+        min-height: 100%;
+        margin-left: 10px;
+      }
+
+      .cover-art {
+        width: 176px;
+        margin-top: 2px;
+      }
+
+      .cover-note {
+        max-width: 315px;
+        color: var(--olive-soft);
+        font-size: 15px;
+      }
+
+      .cover-page .cover-note {
+        max-width: 300px;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .cover-page h1 {
+        max-width: 330px;
+        color: #354620;
+        font-size: clamp(42px, 4vw, 58px);
+      }
+
+      .cover-page h1 span {
+        display: block;
+      }
+
+      .mini-rule {
+        width: 108px;
+        height: 3px;
+        background: var(--gold);
+      }
+
+      .final-image-page {
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: var(--cream);
+      }
+
+      .final-image-frame {
+        position: relative;
+        display: grid;
+        place-items: center;
+        width: min(94%, 390px);
+        aspect-ratio: 5 / 7;
+        margin: 0;
+        padding: 12px 12px 32px;
+        border: 1px solid rgba(79, 86, 20, 0.14);
+        border-radius: 3px;
+        background: #fffaf4;
+        box-shadow:
+          0 16px 28px rgba(48, 45, 38, 0.16),
+          0 1px 0 rgba(255, 255, 255, 0.8) inset;
+        transform: rotate(-1.2deg);
+      }
+
+      .final-image-frame::before {
+        content: "";
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        z-index: 2;
+        width: 94px;
+        height: 28px;
+        border: 1px solid rgba(201, 146, 45, 0.22);
+        background:
+          linear-gradient(90deg, rgba(255, 250, 244, 0.44), rgba(255, 250, 244, 0.78), rgba(255, 250, 244, 0.44));
+        box-shadow: 0 4px 10px rgba(48, 45, 38, 0.08);
+        transform: translateX(-50%) rotate(1.4deg);
+        pointer-events: none;
+      }
+
+      .final-image-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #e8f2f2;
+      }
+
+      .final-note-page {
+        display: grid;
+        grid-template-rows: 1fr;
+        place-items: center;
+      }
+
+      .sticky-note {
+        position: relative;
+        width: min(84%, 360px);
+        min-height: 210px;
+        display: grid;
+        place-items: center;
+        padding: 30px 28px;
+        border: 1px solid rgba(201, 146, 45, 0.38);
+        border-radius: 4px;
+        background:
+          linear-gradient(rgba(201, 146, 45, 0.12) 1px, transparent 1px) 0 12px / 100% 28px,
+          #fff6bd;
+        box-shadow:
+          0 14px 24px rgba(48, 45, 38, 0.14),
+          0 2px 0 rgba(255, 250, 244, 0.62) inset;
+        transform: rotate(-1.5deg);
+      }
+
+      .sticky-note::before {
+        content: "";
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        width: 92px;
+        height: 24px;
+        border: 1px solid rgba(201, 146, 45, 0.24);
+        background: rgba(255, 250, 244, 0.72);
+        box-shadow: 0 4px 10px rgba(48, 45, 38, 0.08);
+        transform: translateX(-50%) rotate(2deg);
+      }
+
+      .sticky-note p {
+        margin: 0;
+        color: var(--olive);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(24px, 2.4vw, 34px);
+        line-height: 1.18;
+        text-align: center;
+      }
+
+      .sticky-note span {
+        display: block;
+        margin-top: 18px;
+        color: var(--burgundy);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      .page-head {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        gap: 12px;
+      }
+
+      .page-head > div {
+        min-width: 0;
+        width: 100%;
+      }
+
+      .page-head h2 {
+        max-width: 100%;
+      }
+
+      .page-head h2.long-title {
+        font-size: clamp(19px, 2vw, 26px);
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .page-num {
+        position: absolute;
+        right: clamp(20px, 2.5vw, 30px);
+        bottom: clamp(18px, 2.2vw, 28px);
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 1px solid var(--gold);
+        border-radius: 50%;
+        color: var(--burgundy);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 18px;
+      }
+
+      .spot-image {
+        overflow: hidden;
+        align-self: start;
+        border: 1px solid rgba(79, 86, 20, 0.2);
+        border-radius: 16px;
+        background: var(--paper);
+        box-shadow: 0 8px 20px rgba(48, 45, 38, 0.1);
+      }
+
+      .spot-image img {
+        width: 100%;
+        height: clamp(170px, 22vw, 245px);
+        object-fit: cover;
+      }
+
+      .copy {
+        display: grid;
+        align-content: start;
+        gap: 10px;
+      }
+
+      .field-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .field-list li {
+        padding-top: 8px;
+        border-top: 1px solid rgba(79, 86, 20, 0.14);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .field-list strong {
+        color: var(--olive);
+      }
+
+      .note-card {
+        padding: 14px;
+        border: 1px solid rgba(79, 86, 20, 0.2);
+        border-radius: 14px;
+        background: rgba(255, 250, 244, 0.7);
+      }
+
+      .note-card p:not(.tag) {
+        margin-top: 6px;
+      }
+
+      .local-rules-page {
+        gap: 8px;
+      }
+
+      .local-rules-page h2 {
+        font-size: 28px;
+      }
+
+      .rules-body {
+        display: grid;
+        gap: 10px;
+      }
+
+      .rules-section {
+        break-inside: avoid;
+        margin: 0 0 10px;
+      }
+
+      .rules-section h3 {
+        margin: 0 0 5px;
+        color: var(--burgundy);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        line-height: 1.15;
+        text-transform: uppercase;
+      }
+
+      .rules-section p {
+        margin: 0 0 5px;
+        padding-top: 5px;
+        border-top: 1px solid rgba(79, 86, 20, 0.12);
+        font-size: 10px;
+        line-height: 1.32;
+      }
+
+      .rules-section strong {
+        color: var(--olive);
+      }
+
+      .map-card {
+        display: grid;
+        grid-template-columns: 104px 1fr;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .map-card img {
+        width: 104px;
+        padding: 8px;
+        border-radius: 10px;
+        background: white;
+      }
+
+      .button {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 9px 14px;
+        border-radius: 999px;
+        background: var(--burgundy);
+        color: var(--white);
+        text-decoration: none;
+      }
+
+      .controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .control-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(79, 86, 20, 0.25);
+        border-radius: 50%;
+        background: var(--white);
+        color: var(--olive);
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(48, 45, 38, 0.1);
+      }
+
+      .control-btn:disabled {
+        cursor: not-allowed;
+        opacity: 0.38;
+      }
+
+      .progress {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border: 0;
+        border-radius: 50%;
+        background: rgba(79, 86, 20, 0.28);
+        cursor: pointer;
+      }
+
+      .dot[aria-current="true"] {
+        width: 22px;
+        border-radius: 999px;
+        background: var(--burgundy);
+      }
+
+      @media (max-width: 840px) {
+        body {
+          padding: 10px;
+        }
+
+        .flatlay {
+          padding: 14px 10px 16px;
+          border-radius: 20px;
+        }
+
+        .book {
+          width: min(100%, 740px);
+          min-height: 520px;
+        }
+
+        .book.closed {
+          grid-template-columns: minmax(0, 370px);
+          width: min(100%, 410px);
+          min-height: 520px;
+        }
+
+        .page {
+          min-height: 480px;
+        }
+
+        .book.closed .page {
+          min-height: 520px;
+        }
+
+        .cover-page::before {
+          width: 10px;
+          background:
+            linear-gradient(90deg, rgba(48, 45, 38, 0.12), rgba(255, 250, 244, 0.16));
+        }
+
+        .cover-page::after {
+          inset: 0;
+          width: auto;
+          height: auto;
+        }
+
+        .cover-page .cover-content {
+          width: min(82%, 300px);
+          margin-left: 8px;
+        }
+
+        h1 {
+          font-size: clamp(34px, 6vw, 46px);
+        }
+
+        h2 {
+          font-size: clamp(20px, 4vw, 26px);
+        }
+
+        p,
+        .field-list li {
+          font-size: 12px;
+        }
+
+        .topbar {
+          margin-bottom: 10px;
+        }
+
+        .topbar img {
+          width: 56px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        body {
+          display: block;
+          padding: 10px;
+        }
+
+        .app {
+          width: 100%;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          gap: 8px;
+          margin-bottom: 10px;
+        }
+
+        .topbar p:not(.eyebrow) {
+          font-size: 12px;
+          line-height: 1.3;
+        }
+
+        .flatlay {
+          min-height: calc(100svh - 80px);
+          padding: 12px 10px 14px;
+        }
+
+        .book,
+        .book.closed {
+          grid-template-columns: minmax(0, 1fr);
+          width: min(100%, 390px);
+          min-height: min(650px, calc(100svh - 160px));
+        }
+
+        .book::before,
+        .book::after {
+          display: none;
+        }
+
+        .page,
+        .book.closed .page {
+          min-height: min(650px, calc(100svh - 160px));
+          padding: 22px 22px 24px;
+          border-radius: 20px;
+        }
+
+        .page.left,
+        .page.right,
+        .page.solo {
+          padding: 22px 22px 24px;
+          border-radius: 20px;
+          transform-origin: center center;
+        }
+
+        .page.left::after,
+        .page.right::after,
+        .page.solo::after {
+          display: none;
+        }
+
+        .turning-sheet.mobile-turning.forward,
+        .turning-sheet.mobile-turning.back {
+          transform-origin: center center;
+          animation-duration: 320ms;
+          animation-timing-function: cubic-bezier(0.22, 0.72, 0.22, 1);
+          box-shadow: 0 14px 26px rgba(48, 45, 38, 0.16);
+        }
+
+        .turning-sheet.mobile-turning.forward {
+          animation-name: mobilePageForward;
+        }
+
+        .turning-sheet.mobile-turning.back {
+          animation-name: mobilePageBack;
+        }
+
+        .cover-page {
+          border-radius: 22px;
+        }
+
+        .cover-page .cover-content {
+          width: min(86%, 300px);
+          margin-left: 0;
+        }
+
+        .cover-page h1 {
+          font-size: clamp(38px, 12vw, 50px);
+        }
+
+        .page-head h2,
+        .page-head h2.long-title {
+          font-size: clamp(26px, 8vw, 34px);
+          line-height: 1.02;
+          white-space: normal;
+        }
+
+        .spot-image img {
+          height: min(260px, 34svh);
+        }
+
+        .copy {
+          gap: 8px;
+        }
+
+        p,
+        .field-list li {
+          font-size: 13px;
+          line-height: 1.35;
+        }
+
+        .local-rules-page h2 {
+          font-size: clamp(30px, 9vw, 38px);
+        }
+
+        .rules-section p {
+          font-size: 11px;
+          line-height: 1.28;
+        }
+
+        .map-card {
+          grid-template-columns: 86px 1fr;
+          gap: 10px;
+        }
+
+        .map-card img {
+          width: 86px;
+        }
+
+        .final-image-frame {
+          width: min(92%, 320px);
+          padding: 10px 10px 26px;
+        }
+
+        .sticky-note {
+          width: min(88%, 310px);
+          min-height: 190px;
+          padding: 26px 22px;
+        }
+
+        .sticky-note p {
+          font-size: clamp(24px, 8vw, 31px);
+        }
+
+        .controls {
+          gap: 12px;
+          margin-top: 14px;
+        }
+
+        .control-btn {
+          width: 48px;
+          height: 48px;
+        }
+
+        .progress {
+          max-width: 190px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+
+      @keyframes mobilePageForward {
+        0% {
+          opacity: 1;
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translate3d(-18px, -4px, 0) scale(0.985);
+        }
+      }
+
+      @keyframes mobilePageBack {
+        0% {
+          opacity: 1;
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translate3d(18px, -4px, 0) scale(0.985);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .page,
+        .turning-sheet {
+          animation-duration: 1ms !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <img src="assets/floral-divider.png" alt="">
+        <div>
+          <p class="eyebrow">Field guide notebook</p>
+          <p>Flip through our favorite Singapore spots. Tap or click the page, use the arrows, or use the keyboard.</p>
+        </div>
+      </header>
+
+      <section class="flatlay" aria-label="Flippable flat-lay Singapore field notes">
+        <div
+          class="book"
+          id="book"
+          role="group"
+          tabindex="0"
+          aria-label="Singapore field guide pages. Use arrow keys or the controls to move through the guide."
+          aria-live="polite"
+        ></div>
+
+        <nav class="controls" aria-label="Notebook controls">
+          <button class="control-btn" type="button" id="prevPage" aria-label="Previous page">‹</button>
+          <div class="progress" id="progress" aria-label="Spread progress"></div>
+          <button class="control-btn" type="button" id="nextPage" aria-label="Next page">›</button>
+        </nav>
+      </section>
+    </main>
+
+    <template id="coverPage">
+      <section class="page cover-page">
+        <div class="cover-content">
+          <p class="eyebrow">Jonathan &amp; Betsy | June 26, 2026</p>
+          <h1><span>Singapore</span><span>Field Guide</span></h1>
+          <p class="cover-note">
+            Our favorite spots for slow mornings, leafy walks, cozy lunches, evening bites,
+            and celebratory drinks. We hope you enjoy your time in Singapore and go on many
+            little adventures along the way.
+          </p>
+          <div class="mini-rule"></div>
+          <img class="cover-art" src="assets/floral-divider.png" alt="">
+        </div>
+      </section>
+    </template>
+
+    <template id="spotPage">
+      <section class="page">
+        <div class="page-head">
+          <div>
+            <p class="tag" data-field="tag"></p>
+            <h2 data-field="title"></h2>
+          </div>
+          <span class="page-num" data-field="num"></span>
+        </div>
+        <figure class="spot-image" data-field="figure"></figure>
+        <div class="copy">
+          <p data-field="description"></p>
+          <ul class="field-list" data-field="list"></ul>
+        </div>
+      </section>
+    </template>
+
+    <template id="tipsLeftPage">
+      <section class="page local-rules-page">
+        <div class="page-head">
+          <div>
+            <p class="tag">Pro traveler tips</p>
+            <h2>Local Rules</h2>
+          </div>
+          <span class="page-num">7</span>
+        </div>
+        <div class="rules-body">
+          <section class="rules-section">
+            <h3>Dining and Hawker Culture</h3>
+            <p><strong>"Kopi" Lingo:</strong> Coffee is not just "coffee." Ask for Kopi-O (black, sugar), Kopi-C (evaporated milk, sugar), or Kopi-Siap (less sugar). Betsy's favorite is iced Kopi-C. Jonathan's favorite is Teh Tarik, which is "pulled tea."</p>
+            <p><strong>Return Your Trays:</strong> It is mandatory and expected to return your dirty tray to the designated racks at hawker centres.</p>
+            <p><strong>Bring Your Own Tissues:</strong> Hawker stalls rarely provide napkins.</p>
+            <p><strong>Queue for Quality:</strong> A long, slow-moving queue of locals is the most reliable sign of a great stall, particularly for dishes like chicken rice.</p>
+            <p><strong>Water Safety:</strong> Tap water is perfectly safe to drink. Bring a reusable bottle to refill, as buying bottled water is expensive.</p>
+          </section>
+
+          <section class="rules-section">
+            <h3>Transportation and Navigation</h3>
+            <p><strong>Tap-and-Go with Credit Cards:</strong> You do not need to buy a special transport card. Use your contactless Mastercard or Visa to tap in and out of buses and the MRT. Look out for our favorite MRT mascots: Stand-up Stacy and Bag-down Benny.</p>
+            <p><strong>Stand on the Left:</strong> On escalators, stand on the left and walk on the right.</p>
+            <p><strong>No Food/Drink on MRT:</strong> There is a strict no-eating-or-drinking policy inside MRT stations and trains.</p>
+            <p><strong>Queue Sides:</strong> When waiting for the train, stand on the sides of the door to allow passengers to alight first.</p>
+            <p><strong>Bus Etiquette:</strong> When taking the bus, wave your hand to hail it, or it might skip the stop.</p>
+            <p><strong>Use Local Apps:</strong> Download Grab for taxi services.</p>
+          </section>
+        </div>
+      </section>
+    </template>
+
+    <template id="tipsRightPage">
+      <section class="page local-rules-page">
+        <div class="page-head">
+          <div>
+            <p class="tag">Pro traveler tips</p>
+            <h2>Local Customs</h2>
+          </div>
+          <span class="page-num">8</span>
+        </div>
+        <div class="rules-body">
+          <section class="rules-section">
+            <h3>Local Customs and Tips</h3>
+            <p><strong>Tipping is Not Required:</strong> Service charges (10%) are usually added to bills in restaurants. Additional tipping is not expected, and in some cases, might be confusing to staff.</p>
+            <p><strong>Dress for Heat, Bring a Layer:</strong> While it is intensely hot and humid outside, shopping malls and public transport are freezing due to high-power air conditioning. Bring a small umbrella in case of occasional spurts of tropical showers.</p>
+            <p><strong>Right Hand Rule:</strong> Use your right hand for social interactions, such as passing money or taking food, as the left is traditionally considered unclean in some cultures.</p>
+            <p><strong>Don't Smoke in Public:</strong> Smoking is highly restricted. Only smoke in clearly marked designated areas, or face high fines. Vapes are not allowed in the country.</p>
+            <p><strong>Visit Neighbourhoods:</strong> Skip the crowded Orchard Road and head to Tiong Bahru (cafes), Joo Chiat (Peranakan culture), Kampong Glam (hip shops), or Tanjong Pagar (Known, cafes, cocktail bars).</p>
+          </section>
+          <article class="note-card map-card">
+            <img src="assets/google-maps-saves-qr.svg" alt="QR code for the full Google Maps saves list">
+            <div>
+              <p class="tag">Full map</p>
+              <p>Browse all our saved Singapore spots.</p>
+              <a class="button" href="https://maps.app.goo.gl/o4M4ES1cKLd4P8Dy8" target="_blank" rel="noopener">Open saves</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </template>
+
+    <template id="finalImagePage">
+      <section class="page final-image-page">
+        <figure class="final-image-frame">
+          <img src="assets/final-invitation-bets-jon.png" alt="Singapore wedding illustration with Marina Bay Sands, Merlion, and welcome plane">
+        </figure>
+      </section>
+    </template>
+
+    <template id="finalNotePage">
+      <section class="page final-note-page">
+        <div class="sticky-note">
+          <p>We're excited for you to discover Singapore!<span>Love, Jonathan and Betsy</span></p>
+        </div>
+      </section>
+    </template>
+
+    <script>
+      const openSpreads = [
+        { left: 0, right: 1 },
+        { left: 2, right: 3 },
+        { left: 4, right: 5 },
+        { left: "tips-left", right: "tips-right" },
+        { left: "final-image", right: "final-note" },
+      ];
+      const mobilePages = [
+        "cover",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        "tips-left",
+        "tips-right",
+        "final-image",
+        "final-note",
+      ];
+
+      const spots = [
+        {
+          tag: "Morning",
+          title: "Ya Kun Kaya Toast",
+          num: "1",
+          image: "assets/favorites/01-kaya-toast.jpg",
+          alt: "Illustration of kaya toast and kopi",
+          description: "Add soy sauce and white pepper to the eggs, then dip the toast. Betsy's favorite is iced Kopi-C. Jonathan's favorite is the hot tea with condensed milk.",
+          list: [
+            ["Order", "kaya toast set, soft-boiled eggs, kopi or tea."],
+            ["Location", "multiple locations."],
+          ],
+        },
+        {
+          tag: "Morning",
+          title: "Bukit Timah Reserve",
+          num: "2",
+          image: "assets/favorites/03-bukit-timah.jpg",
+          alt: "Illustration of Bukit Timah Nature Reserve",
+          description: "Explore rainforest trails around Singapore's highest natural point. Look out for long-tailed macaques, monitor lizards, forest birds, and the 163-metre summit climb.",
+          list: [
+            ["Bring", "water, comfy shoes, and patience for the humidity."],
+            ["More info", "<a href=\"https://www.nparks.gov.sg/visit/parks/park-detail/bukit-timah-nature-reserve\" target=\"_blank\" rel=\"noopener\">NParks visitor guide</a>."],
+            ["Location", "177 Hindhede Drive."],
+          ],
+        },
+        {
+          tag: "Lunch",
+          title: "328 Katong Laksa",
+          num: "3",
+          image: "assets/favorites/02-katong-laksa.jpg",
+          alt: "Illustration of 328 Katong Laksa",
+          description: "A coconutty bowl, then a wander through vibrant Joo Chiat shophouses.",
+          list: [
+            ["Try", "since the noodles are cut, try using only the spoon to eat."],
+            ["Nearby", "walk Koon Seng Road's pastel Peranakan houses, browse Joo Chiat boutiques, and save room for kueh or gelato."],
+            ["Location", "51 East Coast Road."],
+          ],
+        },
+        {
+          tag: "Afternoon",
+          title: "National Gallery Singapore",
+          num: "4",
+          image: "assets/favorites/06-national-gallery-singapore.png",
+          alt: "Illustration of the National Gallery Singapore atrium",
+          imagePosition: "center center",
+          description: "Cool off inside the restored City Hall and former Supreme Court, then wander Southeast Asian art galleries and rooftop Padang views.",
+          list: [
+            ["Tickets", "general admission is free for Singaporeans and PRs; standard general admission is S$20, with free non-ticketed public areas too."],
+            ["Location", "1 St Andrew's Road, Singapore 178957."],
+          ],
+        },
+        {
+          tag: "Night",
+          title: "Lau Pa Sat",
+          num: "5",
+          image: "assets/favorites/04-lau-pa-sat.jpg",
+          alt: "Illustration of Lau Pa Sat at night",
+          imagePosition: "left center",
+          description: "Follow the smoke, share satay, and let the skyline glow.",
+          list: [
+            ["Go for", "satay street, night energy, and group-friendly dinner."],
+            ["Try", "chicken wings, Hokkien mee, carrot cake, rojak, sugarcane juice, and plenty of satay."],
+            ["Location", "18 Raffles Quay."],
+          ],
+        },
+        {
+          tag: "Night Cap",
+          title: "ATLAS",
+          num: "6",
+          image: "assets/favorites/05-atlas-bar.jpg",
+          alt: "Illustration of ATLAS bar",
+          description: "World's 50 Best Bars alum. Reserve ahead for art deco magic, polished martinis, Champagne cocktails, and one of the city's most dramatic gin lists.",
+          list: [
+            ["Book", "make a reservation beforehand."],
+            ["Website", "<a href=\"https://atlasbar.sg/\" target=\"_blank\" rel=\"noopener\">atlasbar.sg</a>."],
+            ["Location", "600 North Bridge Rd."],
+          ],
+        },
+      ];
+
+      const book = document.getElementById("book");
+      const progress = document.getElementById("progress");
+      const prev = document.getElementById("prevPage");
+      const next = document.getElementById("nextPage");
+      const coverTemplate = document.getElementById("coverPage");
+      const spotTemplate = document.getElementById("spotPage");
+      const tipsLeftTemplate = document.getElementById("tipsLeftPage");
+      const tipsRightTemplate = document.getElementById("tipsRightPage");
+      const finalImageTemplate = document.getElementById("finalImagePage");
+      const finalNoteTemplate = document.getElementById("finalNotePage");
+      const mobileQuery = window.matchMedia("(max-width: 720px)");
+      const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+      let current = 0;
+      let isFlipping = false;
+
+      function isMobile() {
+        return mobileQuery.matches;
+      }
+
+      function maxStep() {
+        return isMobile() ? mobilePages.length - 1 : openSpreads.length;
+      }
+
+      function buildProgress() {
+        progress.replaceChildren();
+        Array.from({ length: maxStep() + 1 }).forEach((_, index) => {
+          const dot = document.createElement("button");
+          dot.className = "dot";
+          dot.type = "button";
+          const pageType = isMobile() ? "page" : "spread";
+          dot.setAttribute("aria-label", index === 0 ? "Go to cover" : `Go to ${pageType} ${index}`);
+          dot.addEventListener("click", () => {
+            goTo(index);
+          });
+          progress.appendChild(dot);
+        });
+      }
+
+      function makePage(pageRef, side) {
+        let page;
+        if (pageRef === "cover") {
+          page = coverTemplate.content.firstElementChild.cloneNode(true);
+        } else if (pageRef === "tips-left") {
+          page = tipsLeftTemplate.content.firstElementChild.cloneNode(true);
+        } else if (pageRef === "tips-right") {
+          page = tipsRightTemplate.content.firstElementChild.cloneNode(true);
+        } else if (pageRef === "final-image") {
+          page = finalImageTemplate.content.firstElementChild.cloneNode(true);
+        } else if (pageRef === "final-note") {
+          page = finalNoteTemplate.content.firstElementChild.cloneNode(true);
+        } else {
+          const spot = spots[pageRef];
+          page = spotTemplate.content.firstElementChild.cloneNode(true);
+          page.querySelector("[data-field='tag']").textContent = spot.tag;
+          const title = page.querySelector("[data-field='title']");
+          title.textContent = spot.title;
+          title.classList.toggle("long-title", spot.title.length > 22);
+          page.querySelector("[data-field='num']").textContent = spot.num;
+          page.querySelector("[data-field='description']").textContent = spot.description;
+          const figure = page.querySelector("[data-field='figure']");
+          const img = document.createElement("img");
+          img.src = spot.image;
+          img.alt = spot.alt;
+          if (spot.imagePosition) img.style.objectPosition = spot.imagePosition;
+          figure.appendChild(img);
+          const list = page.querySelector("[data-field='list']");
+          spot.list.forEach(([label, value]) => {
+            const item = document.createElement("li");
+            item.innerHTML = `<strong>${label}:</strong> ${value}`;
+            list.appendChild(item);
+          });
+        }
+        page.classList.add(side);
+        return page;
+      }
+
+      function updateControls() {
+        Array.from(progress.children).forEach((dot, index) => {
+          dot.setAttribute("aria-current", index === current ? "true" : "false");
+        });
+
+        prev.disabled = current === 0 || isFlipping;
+        next.disabled = current === maxStep() || isFlipping;
+      }
+
+      function render() {
+        current = Math.max(0, Math.min(maxStep(), current));
+        book.classList.toggle("closed", current === 0);
+        book.classList.toggle("is-clickable", true);
+        if (isMobile()) {
+          book.replaceChildren(makePage(mobilePages[current], "solo"));
+        } else if (current === 0) {
+          book.replaceChildren(makePage("cover", "solo"));
+        } else {
+          const spread = openSpreads[current - 1];
+          book.replaceChildren(makePage(spread.left, "left"), makePage(spread.right, "right"));
+        }
+
+        updateControls();
+      }
+
+      function animateFlip(target) {
+        if (reducedMotionQuery.matches) return Promise.resolve();
+        const forward = target > current;
+        const turnPage = forward
+          ? book.querySelector(".page.right, .page.solo")
+          : book.querySelector(".page.left, .page.solo");
+
+        if (!turnPage) return Promise.resolve();
+        const bookBox = book.getBoundingClientRect();
+        const pageBox = turnPage.getBoundingClientRect();
+        const sheet = turnPage.cloneNode(true);
+        sheet.classList.add("turning-sheet", forward ? "forward" : "back");
+        if (isMobile()) sheet.classList.add("mobile-turning");
+        sheet.style.left = `${pageBox.left - bookBox.left}px`;
+        sheet.style.top = `${pageBox.top - bookBox.top}px`;
+        sheet.style.width = `${pageBox.width}px`;
+        sheet.style.height = `${pageBox.height}px`;
+        book.appendChild(sheet);
+        if (isMobile()) turnPage.style.opacity = "0.24";
+
+        return new Promise((resolve) => {
+          let done = false;
+          const finish = () => {
+            if (done) return;
+            done = true;
+            turnPage.style.opacity = "";
+            sheet.remove();
+            resolve();
+          };
+
+          sheet.addEventListener("animationend", finish, { once: true });
+          window.setTimeout(finish, isMobile() ? 420 : 820);
+        });
+      }
+
+      async function goTo(target) {
+        if (isFlipping || target === current) return;
+        const boundedTarget = Math.max(0, Math.min(maxStep(), target));
+        if (boundedTarget === current) return;
+
+        isFlipping = true;
+        book.classList.remove("is-clickable");
+        updateControls();
+        await animateFlip(boundedTarget);
+        current = boundedTarget;
+        isFlipping = false;
+        render();
+      }
+
+      prev.addEventListener("click", () => {
+        goTo(current - 1);
+      });
+
+      next.addEventListener("click", () => {
+        goTo(current + 1);
+      });
+
+      book.addEventListener("click", (event) => {
+        if (event.target.closest("a, button")) return;
+        if (current === 0) {
+          next.click();
+          return;
+        }
+
+        const page = event.target.closest(".page");
+        if (page?.classList.contains("left") && current > 0) {
+          prev.click();
+        } else if (current < maxStep()) {
+          next.click();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        const target = event.target;
+        if (target instanceof HTMLElement && target.closest("input, textarea, select, [contenteditable='true']")) return;
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          goTo(current - 1);
+        }
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          goTo(current + 1);
+        }
+        if (event.key === "Home") {
+          event.preventDefault();
+          goTo(0);
+        }
+        if (event.key === "End") {
+          event.preventDefault();
+          goTo(maxStep());
+        }
+      });
+
+      const handleViewportChange = () => {
+        current = Math.min(current, maxStep());
+        buildProgress();
+        render();
+      };
+
+      if (typeof mobileQuery.addEventListener === "function") {
+        mobileQuery.addEventListener("change", handleViewportChange);
+      } else {
+        mobileQuery.addListener(handleViewportChange);
+      }
+
+      buildProgress();
+      render();
+    </script>
+  </body>
+</html>
